@@ -279,4 +279,9 @@
     <!--music search tile-->
 
     <string name="music_search_tile">Music search</string>
+
+    <!--extra dim tile-->
+
+    <string name="extra_dim_tile">Extra Dim</string>
+
 </resources>
