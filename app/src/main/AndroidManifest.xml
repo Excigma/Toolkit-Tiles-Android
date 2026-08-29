@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" tools:ignore="ForegroundServicesPolicy" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 
     <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions" />
@@ -698,6 +699,25 @@
                 android:value="android.service.quicksettings.CATEGORY_DISPLAY" />
         </service>
 
+        <!--inverse portrait quick settings tile service-->
+
+        <service
+            android:name=".tiles.inverseportrait.InversePortraitTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_inverse_portrait"
+            android:label="@string/inverse_portrait_tile"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:process=":tiles">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+            <meta-data
+                android:name="android.service.quicksettings.TILE_CATEGORY"
+                android:value="android.service.quicksettings.CATEGORY_DISPLAY" />
+        </service>
 
     </application>
 </manifest>
