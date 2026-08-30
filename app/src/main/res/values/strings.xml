@@ -292,4 +292,11 @@
 
     <string name="overlay_permission_title">Permission required</string>
     <string name="overlay_permission_message">To force reverse portrait system-wide, allow "Modify system settings" and "Draw over other apps" for Toolkit Tiles.</string>
+
+    <!--refresh rate tile-->
+
+    <string name="refresh_rate_tile">Refresh Cap</string>
+    <string name="refresh_rate_60">60 Hz</string>
+    <string name="refresh_rate_90">90 Hz</string>
+    <string name="refresh_rate_120">120 Hz</string>
 </resources>
