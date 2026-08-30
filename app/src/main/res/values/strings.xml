@@ -291,5 +291,5 @@
     <!--overlay permission for inverse portrait (uses overlay method)-->
 
     <string name="overlay_permission_title">Permission required</string>
-    <string name="overlay_permission_message">To force reverse portrait on all apps (including launcher), allow "Draw over other apps" for Toolkit Tiles. Tap Settings to enable it, then tap the tile again.</string>
+    <string name="overlay_permission_message">To force reverse portrait system-wide, allow "Modify system settings" and "Draw over other apps" for Toolkit Tiles.</string>
 </resources>

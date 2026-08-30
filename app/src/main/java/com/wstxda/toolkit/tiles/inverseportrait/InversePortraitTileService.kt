@@ -11,19 +11,15 @@ class InversePortraitTileService : BaseTileService() {
     private val delegate by lazy { ForcePortraitDelegate(this, "inverse_portrait_prefs") }
 
     override fun onClick() {
-        if (!delegate.hasPermission()) {
-            try {
-                val dialog = android.app.AlertDialog.Builder(this)
-                    .setTitle(getString(R.string.overlay_permission_title))
-                    .setMessage(getString(R.string.overlay_permission_message))
-                    .setNegativeButton(android.R.string.cancel) { d, _ -> d.dismiss() }
-                    .setPositiveButton(getString(R.string.tile_setup)) { _, _ ->
-                        startActivityAndCollapse(delegate.permissionIntent(packageName))
-                    }.create()
-                showDialog(dialog)
-            } catch (_: Exception) {
-                startActivityAndCollapse(delegate.permissionIntent(packageName))
-            }
+        val hasWrite = delegate.hasWriteSettingsPermission()
+        val hasOverlay = delegate.hasOverlayPermission()
+        // Require BOTH - open settings directly (TileService dialog is flaky on ColorOS)
+        if (!hasWrite) {
+            startActivityAndCollapse(delegate.writeSettingsIntent(packageName))
+            return
+        }
+        if (!hasOverlay) {
+            startActivityAndCollapse(delegate.permissionIntent(packageName))
             return
         }
         val newActive = !delegate.isActive()
